@@ -29,7 +29,7 @@ npm install only-shallow
 ## usage
 
 ```javascript
-var deepEqual = require('deeper')
+var deepEqual = require('only-shallow')
 
 if (!deepEqual(obj1, obj2)) console.log("yay! diversity!");
 ```
