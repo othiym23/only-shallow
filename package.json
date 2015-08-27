@@ -1,0 +1,31 @@
+{
+  "name": "only-shallow",
+  "version": "1.0.0",
+  "description": "like `deeper` and `deepest`, but less strict, and with 90s flavor",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/othiym23/only-shallow.git"
+  },
+  "keywords": [
+    "deeper",
+    "deepest",
+    "deepEqual",
+    "tap",
+    "mbv",
+    "shoegazer",
+    "portlandia"
+  ],
+  "author": "Forrest L Norvell <ogd@aoaioxxysz.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/othiym23/only-shallow/issues"
+  },
+  "homepage": "https://github.com/othiym23/only-shallow#readme",
+  "dependencies": {
+    "tap": "^1.3.2"
+  }
+}
