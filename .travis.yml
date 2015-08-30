@@ -6,4 +6,5 @@ node_js:
   - '0.12'
   - 'iojs'
 before_install:
-  - npm install -g npm@latest
+  - npm install -g npm@latest pangyp
+  - npm config set node-gyp pangyp

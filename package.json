@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/othiym23/only-shallow#readme",
   "devDependencies": {
+    "buffertools": "^2.1.3",
     "tap": "^1.3.2"
   }
 }

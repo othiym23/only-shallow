@@ -4,8 +4,16 @@ function isArguments (object) {
   return Object.prototype.toString.call(object) === '[object Arguments]'
 }
 
-module.exports = function shallower (a, b) {
+module.exports = shallower
+
+function shallower (a, b) {
   return shallower_(a, b, [], [])
+}
+
+try {
+  shallower.fastEqual = require('buffertools').equals
+} catch (e) {
+  // whoops, nobody told buffertools it wasn't installed
 }
 
 /**
@@ -58,11 +66,15 @@ function shallower_ (a, b, ca, cb) {
   } else if (typeof a !== 'object' || typeof b !== 'object') {
     return false
   } else if (Buffer.isBuffer(a) && Buffer.isBuffer(b)) {
-    if (a.length !== b.length) return false
+    if (shallower.fastEqual) {
+      return shallower.fastEqual.call(a, b)
+    } else {
+      if (a.length !== b.length) return false
 
-    for (var j = 0; j < a.length; j++) if (a[j] !== b[j]) return false
+      for (var j = 0; j < a.length; j++) if (a[j] != b[j]) return false
 
-    return true
+      return true
+    }
   } else if (a instanceof Date && b instanceof Date) {
     return a.getTime() === b.getTime()
   } else if (a instanceof RegExp && b instanceof RegExp) {
