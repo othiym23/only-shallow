@@ -7,6 +7,67 @@ test("shouldn't care about key order and types", function (t) {
   t.end()
 })
 
+test('should notice objects with different shapes', function (t) {
+  t.notOk(same(
+    { a: 1 },
+    { a: 1, b: undefined }
+  ))
+  t.end()
+})
+
+test('should notice objects with different keys', function (t) {
+  t.notOk(same(
+    { a: 1, b: 2 },
+    { a: 1, c: 2 }
+  ))
+  t.end()
+})
+
+test('should match empty Buffers', function (t) {
+  t.ok(same(new Buffer([]), new Buffer([])))
+  t.end()
+})
+
+test('should match similar Buffers', function (t) {
+  t.ok(same(
+    new Buffer([0]),
+    new Buffer([0])
+  ))
+  t.ok(same(
+    new Buffer([0, 1, 3]),
+    new Buffer([0, 1, 3])
+  ))
+  t.end()
+})
+
+test('should notice different Buffers', function (t) {
+  t.notOk(same(
+    new Buffer([0, 1, 2]),
+    new Buffer([0, 1, 23])
+  ))
+  t.notOk(same(
+    new Buffer([0, 1]),
+    new Buffer([0, 1, 23])
+  ))
+  t.end()
+})
+
+test('should handle dates', function (t) {
+  t.notOk(same(new Date('1972-08-01'), null))
+  t.notOk(same(new Date('1972-08-01'), undefined))
+  t.ok(same(new Date('1972-08-01'), new Date('1972-08-01')))
+  t.ok(same({ x: new Date('1972-08-01') }, { x: new Date('1972-08-01') }))
+  t.end()
+})
+
+test('should handle RegExps', function (t) {
+  t.notOk(same(/[b]/, /[a]/))
+  t.notOk(same(/[a]/i, /[a]/g))
+  t.ok(same(/[a]/, /[a]/))
+  t.ok(same(/ab?[a-z]{,6}/g, /ab?[a-z]{,6}/g))
+  t.end()
+})
+
 test('should handle arguments', function (t) {
   var outer = arguments
   ;(function inner (tt) {
@@ -64,6 +125,18 @@ test("null is as shallow as you'd expect", function (t) {
   t.end()
 })
 
+test('the same number matches', function (t) {
+  t.ok(same(0, 0))
+  t.ok(same(1, 1))
+  t.ok(same(3.14, 3.14))
+  t.end()
+})
+
+test("different numbers don't match", function (t) {
+  t.notOk(same(0, 1))
+  t.notOk(same(1, -1))
+  t.notOk(same(3.14, 2.72))
+  t.end()
 })
 
 test("shallower shouldn't care about key order (but still might) and types", function (t) {
