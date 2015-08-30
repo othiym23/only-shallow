@@ -72,8 +72,6 @@ function shallower_ (a, b, ca, cb) {
     a.lastIndex === b.lastIndex &&
     a.ignoreCase === b.ignoreCase
   } else if (isArguments(a) || isArguments(b)) {
-    if (!(isArguments(a) && isArguments(b))) return false
-
     var slice = Array.prototype.slice
     return shallower_(slice.call(a), slice.call(b), ca, cb)
   } else {

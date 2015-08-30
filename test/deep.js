@@ -7,6 +7,17 @@ test("shouldn't care about key order and types", function (t) {
   t.end()
 })
 
+test('should handle arguments', function (t) {
+  var outer = arguments
+  ;(function inner (tt) {
+    var inner = arguments
+    t.ok(same(outer, outer))
+    t.ok(same(outer, inner))
+    t.ok(same(outer, [t]))
+  }(t))
+  t.end()
+})
+
 test('same arrays match', function (t) {
   t.ok(same([1, 2, 3], [1, 2, 3]))
   t.end()
