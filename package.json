@@ -1,6 +1,6 @@
 {
   "name": "only-shallow",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "like `deeper` and `deepest`, but less strict, and with 90s flavor",
   "main": "index.js",
   "scripts": {
