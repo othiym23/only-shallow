@@ -2,17 +2,17 @@ var tap = require('tap')
 var test = tap.test
 var same = require('../')
 
-test("shallower shouldn't care about key order and types", function (t) {
+test("shouldn't care about key order and types", function (t) {
   t.ok(same({ a: 1, b: 2 }, { b: 2, a: '1' }))
   t.end()
 })
 
-test('shallower find same arrays', function (t) {
+test('same arrays match', function (t) {
   t.ok(same([1, 2, 3], [1, 2, 3]))
   t.end()
 })
 
-test('shallower find different arrays', function (t) {
+test("different arrays don't match", function (t) {
   t.notOk(same([1, 2, 3], [1, 2, 3, 4]))
   t.notOk(same([1, 2, 3], [1, 2, 4]))
   t.end()
