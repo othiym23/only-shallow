@@ -4,7 +4,7 @@
   "description": "like `deeper` and `deepest`, but less strict, and with 90s flavor",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "standard && tap test/*.js --coverage"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/othiym23/only-shallow#readme",
   "devDependencies": {
     "buffertools": "^2.1.3",
+    "standard": "^5.1.1",
     "tap": "^1.3.2"
   }
 }
