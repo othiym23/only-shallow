@@ -32,11 +32,27 @@ test("shallower shouldn't care about key order recursively and types", function 
   t.end()
 })
 
-test('shallower handles null properly', function (t) {
-  t.ok(same(
-    { x: null },
-    { x: null }
-  ))
+test('undefined is the same as itself', function (t) {
+  t.ok(same(undefined, undefined))
+  t.ok(same({ x: undefined }, { x: undefined }))
+  t.ok(same({ x: [undefined] }, { x: [undefined] }))
+  t.end()
+})
+
+test('undefined and null are Close Enough', function (t) {
+  t.ok(same(undefined, null))
+  t.ok(same({ x: null }, { x: undefined }))
+  t.ok(same({ x: [undefined] }, { x: [null] }))
+  t.end()
+})
+
+test("null is as shallow as you'd expect", function (t) {
+  t.ok(same(null, null))
+  t.ok(same({ x: null }, { x: null }))
+  t.ok(same({ x: [null] }, { x: [null] }))
+  t.end()
+})
+
 })
 
 test("shallower shouldn't care about key order (but still might) and types", function (t) {

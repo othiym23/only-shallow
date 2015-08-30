@@ -22,10 +22,12 @@ module.exports = function shallower (a, b) {
  *    being more of a duck-typer, because it doesn't care about constructor
  *    matching), and it needs to be careful to filter out objects (including
  *    Arrays).
- * 2. Since the only matching entities to get to this test must be objects, if
+ * 2. `null` *is* an object -- a singleton value object, in fact -- so if
+ *    either is null, return a == b. For the purposes of only-shallow,
+ *    loose testing of emptiness makes sense.
+ * 3. Since the only matching entities to get to this test must be objects, if
  *    a or b is not an object, they're clearly not the same. All unfiltered a
  *    and b getting are objects (including null).
- * 3. null is a singleton value object, so if either is null, return a === b
  * 4. It's much faster to compare dates by numeric value than by lexical value.
  * 5. Same goes for Regexps.
  * 6. The parts of an arguments list most people care about are the arguments
@@ -51,10 +53,10 @@ function shallower_ (a, b, ca, cb) {
   /*eslint eqeqeq:0*/
   if (typeof a !== 'object' && typeof b !== 'object' && a == b) {
     return true
+  } else if (a === null || b === null) {
+    return a == b
   } else if (typeof a !== 'object' || typeof b !== 'object') {
     return false
-  } else if (a === null || b === null) {
-    return a === b
   } else if (Buffer.isBuffer(a) && Buffer.isBuffer(b)) {
     if (a.length !== b.length) return false
 
