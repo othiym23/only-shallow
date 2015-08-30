@@ -68,6 +68,20 @@ test('should handle RegExps', function (t) {
   t.end()
 })
 
+test('should handle functions', function (t) {
+  var fnA = function (a) { return a }
+  var fnB = function (a) { return a }
+
+  t.notOk(same(
+    function a () {},
+    function a () {} // but is it the _same_ a tho
+  ))
+  t.notOk(same(fnA, fnB))
+  t.ok(same(fnA, fnA))
+  t.ok(same(fnB, fnB))
+  t.end()
+})
+
 test('should handle arguments', function (t) {
   var outer = arguments
   ;(function inner (tt) {
