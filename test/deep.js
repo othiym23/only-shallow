@@ -18,6 +18,12 @@ test('shallower find different arrays', function (t) {
   t.end()
 })
 
+test('empty arrays match', function (t) {
+  t.ok(same([], []))
+  t.ok(same({ x: [] }, { x: [] }))
+  t.end()
+})
+
 test("shallower shouldn't care about key order recursively and types", function (t) {
   t.ok(same(
     { x: { a: 1, b: 2 }, y: { c: 3, d: 4 } },

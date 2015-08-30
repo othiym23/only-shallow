@@ -77,6 +77,8 @@ function shallower_ (a, b, ca, cb) {
   } else {
     var ka = Object.keys(a)
     var kb = Object.keys(b)
+    // don't bother with stack acrobatics if there's nothing there
+    if (ka.length === 0 && kb.length === 0) return true
     if (ka.length !== kb.length) return false
 
     var cal = ca.length
