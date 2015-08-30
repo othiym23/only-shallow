@@ -29,7 +29,9 @@ try {
  *    biggest difference between `only-shallow` and `deeper` / `deepest` (along
  *    with being more of a duck-typer, because it doesn't care about constructor
  *    matching), and it needs to be careful to filter out objects (including
- *    Arrays).
+ *    Arrays). This will also catch functions, with the useful (default) property
+ *    that only references to the same function are considered equal. 'Ware the
+ *    halting problem!
  * 2. `null` *is* an object – a singleton value object, in fact – so if
  *    either is `null`, return a == b. For the purposes of `only-shallow`,
  *    loose testing of emptiness makes sense.
