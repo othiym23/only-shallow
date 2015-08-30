@@ -1,5 +1,5 @@
 [![only-shallow on npm](https://img.shields.io/npm/v/only-shallow.svg?style=flat)](http://npm.im/only-shallow)
-[![Build Status](https://travis-ci.org/othiym23/only-shallow.svg?branch=v1.1.0)](https://travis-ci.org/othiym23/only-shallow)
+[![Build Status](https://travis-ci.org/othiym23/only-shallow.svg?branch=master)](https://travis-ci.org/othiym23/only-shallow)
 [![Coverage Status](https://coveralls.io/repos/othiym23/only-shallow/badge.svg?branch=master&service=github)](https://coveralls.io/github/othiym23/only-shallow?branch=master)
 [!["standard" style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
