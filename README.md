@@ -1,3 +1,10 @@
+[![only-shallow on npm](https://img.shields.io/npm/v/only-shallow.svg?style=flat)](http://npm.im/only-shallow)
+[![Build Status](https://travis-ci.org/othiym23/only-shallow.svg?branch=v1.1.0)](https://travis-ci.org/othiym23/only-shallow)
+[![Coverage Status](https://coveralls.io/repos/othiym23/only-shallow/badge.svg?branch=master&service=github)](https://coveralls.io/github/othiym23/only-shallow?branch=master)
+[!["standard" style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
+# only-shallow
+
 If [`deeper`](http://npm.im/deeper) and [`deepest`](http://npm.im/deepest) are
 `assert.deepEqual()`'s strict East Coast siblings with engineering backgrounds,
 `only-shallow` is their laid-back California cousin.  `only-shallow` is a
@@ -14,8 +21,8 @@ If you install [Ben Noordhuis](http://github.com/bnoordhuis)'s
 [buffertools](https://github.com/bnoordhuis/node-buffertools) into a project
 using `deeper`, it will use that to speed up comparison of Buffers. This used
 to be installed as an optional dependency, but it gets in the way of
-browserification and also makes using `only-shallow` in your own projects harder, so
-I changed it to just try to use it if it's there.
+browserification and also makes using `only-shallow` in your own projects
+harder, so I changed it to just try to use it if it's there.
 
 The core algorithm is based on those used by Node's assertion library and the
 implementation of cycle detection in
