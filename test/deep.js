@@ -26,6 +26,13 @@ test("shallower shouldn't care about key order recursively and types", function 
   t.end()
 })
 
+test('shallower handles null properly', function (t) {
+  t.ok(same(
+    { x: null },
+    { x: null }
+  ))
+})
+
 test("shallower shouldn't care about key order (but still might) and types", function (t) {
   t.ok(same(
     [

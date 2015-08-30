@@ -25,8 +25,7 @@ module.exports = function shallower (a, b) {
  * 2. Since the only matching entities to get to this test must be objects, if
  *    a or b is not an object, they're clearly not the same. All unfiltered a
  *    and b getting are objects (including null).
- * 3. null is an object, but null === null. All unfiltered a and b are non-null
- *    objects.
+ * 3. null is a singleton value object, so if either is null, return a === b
  * 4. It's much faster to compare dates by numeric value than by lexical value.
  * 5. Same goes for Regexps.
  * 6. The parts of an arguments list most people care about are the arguments
@@ -55,7 +54,7 @@ function shallower_ (a, b, ca, cb) {
   } else if (typeof a !== 'object' || typeof b !== 'object') {
     return false
   } else if (a === null || b === null) {
-    return false
+    return a === b
   } else if (Buffer.isBuffer(a) && Buffer.isBuffer(b)) {
     if (a.length !== b.length) return false
 
