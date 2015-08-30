@@ -14,15 +14,11 @@ and has no dependencies. It's not particularly strict about matching types.
 It's more of a duck squeezer.
 
 It has some optimizations but stresses correctness over raw speed. Unlike
-`deeper` and `deepest`, it has no native dependencies, so you can use it, like,
-wherever.
+`deepest`, it has no native dependencies, so you can use it, like, wherever.
 
 If you install [Ben Noordhuis](http://github.com/bnoordhuis)'s
 [buffertools](https://github.com/bnoordhuis/node-buffertools) into a project
-using `deeper`, it will use that to speed up comparison of Buffers. This used
-to be installed as an optional dependency, but it gets in the way of
-browserification and also makes using `only-shallow` in your own projects
-harder, so I changed it to just try to use it if it's there.
+using `only-shallow`, it will use that to speed up comparison of Buffers.
 
 The core algorithm is based on those used by Node's assertion library and the
 implementation of cycle detection in
