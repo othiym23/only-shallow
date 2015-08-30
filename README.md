@@ -44,6 +44,32 @@ var deepEqual = require('only-shallow')
 if (!deepEqual(obj1, obj2)) console.log("yay! diversity!");
 ```
 
+## details
+
+Copied from the source, here are the details of `only-shallow`'s algorithm:
+
+1. Use loose equality (`==`) only for value types (non-objects). This is the
+   biggest difference between `only-shallow` and `deeper` / `deepest` (along
+   with being more of a duck-typer, because it doesn't care about constructor
+   matching), and it needs to be careful to filter out objects (including
+   Arrays).
+2. `null` *is* an object – a singleton value object, in fact – so if
+   either is `null`, return a == b. For the purposes of `only-shallow`,
+   loose testing of emptiness makes sense.
+3. Since the only way to make it this far is for `a` or `b` to be an object, if
+   `a` or `b` is *not* an object, they're clearly not the same.
+4. It's much faster to compare dates by numeric value than by lexical value.
+5. Same goes for Regexps.
+6. The parts of an arguments list most people care about are the arguments
+   themselves, not the callee, which you shouldn't be looking at anyway.
+7. Objects are more complex:
+   a. Return `true` if `a` and `b` both have no properties.
+   b. Ensure that `a` and `b` have the same number of own properties with the
+      same names (which is what `Object.keys()` returns).
+   c. Ensure that cyclical references don't blow up the stack.
+   d. Ensure that all the key names match (faster).
+   e. Ensure that all of the associated values match, recursively (slower).
+
 ## license
 
 ISC. Go nuts.
