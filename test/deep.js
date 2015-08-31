@@ -23,35 +23,6 @@ test('should notice objects with different keys', function (t) {
   t.end()
 })
 
-test('should match empty Buffers', function (t) {
-  t.ok(same(new Buffer([]), new Buffer([])))
-  t.end()
-})
-
-test('should match similar Buffers', function (t) {
-  t.ok(same(
-    new Buffer([0]),
-    new Buffer([0])
-  ))
-  t.ok(same(
-    new Buffer([0, 1, 3]),
-    new Buffer([0, 1, 3])
-  ))
-  t.end()
-})
-
-test('should notice different Buffers', function (t) {
-  t.notOk(same(
-    new Buffer([0, 1, 2]),
-    new Buffer([0, 1, 23])
-  ))
-  t.notOk(same(
-    new Buffer([0, 1]),
-    new Buffer([0, 1, 23])
-  ))
-  t.end()
-})
-
 test('should handle dates', function (t) {
   t.notOk(same(new Date('1972-08-01'), null))
   t.notOk(same(new Date('1972-08-01'), undefined))

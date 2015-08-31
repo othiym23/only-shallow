@@ -58,7 +58,9 @@ function shallower_ (a, b, ca, cb) {
   } else if (typeof a !== 'object' || typeof b !== 'object') {
     return false
   } else if (Buffer.isBuffer(a) && Buffer.isBuffer(b)) {
-    if (shallower.fastEqual) {
+    if (a.equals) {
+      return a.equals(b)
+    } else if (shallower.fastEqual) {
       return shallower.fastEqual.call(a, b)
     } else {
       if (a.length !== b.length) return false
