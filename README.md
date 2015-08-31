@@ -65,12 +65,12 @@ Copied from the source, here are the details of `only-shallow`'s algorithm:
 6. The parts of an arguments list most people care about are the arguments
    themselves, not the callee, which you shouldn't be looking at anyway.
 7. Objects are more complex:
-  1. Return `true` if `a` and `b` both have no properties.
-  2. Ensure that `a` and `b` have the same number of own properties (which is
-     what `Object.keys()` returns).
-  3. Ensure that cyclical references don't blow up the stack.
-  4. Ensure that all the key names match (faster).
-  5. Ensure that all of the associated values match, recursively (slower).
+   1. Return `true` if `a` and `b` both have no properties.
+   2. Ensure that `a` and `b` have the same number of own properties (which is
+      what `Object.keys()` returns).
+   3. Ensure that cyclical references don't blow up the stack.
+   4. Ensure that all the key names match (faster).
+   5. Ensure that all of the associated values match, recursively (slower).
 
 ## license
 
