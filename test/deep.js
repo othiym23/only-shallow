@@ -55,7 +55,7 @@ test('should handle functions', function (t) {
 
 test('should handle arguments', function (t) {
   var outer = arguments
-  ;(function inner (tt) {
+  ;(function (tt) {
     var inner = arguments
     t.ok(same(outer, outer))
     t.ok(same(outer, inner))
@@ -152,5 +152,25 @@ test("shallower shouldn't blow up on circular data structures", function (t) {
   x2.y = y2
 
   t.ok(same(x1, x2))
+  t.end()
+})
+
+test('regexps match strings', function (t) {
+  var x = { one: /.ring$/ }
+  var y = { one: 'String' }
+  t.ok(same(x, y))
+  t.ok(same(y, x))
+  t.ok(same(y.one, x.one))
+  t.ok(same(x.one, y.one))
+
+  x = [ 'String', /.ring$/ ]
+  y = [ /.ring$/, 'String' ]
+  t.ok(same(x, y))
+  t.ok(same(y, x))
+
+  x = [ 'Ring', /.ring$/ ]
+  y = [ /.ring$/, 'Ring' ]
+  t.notOk(same(x, y))
+  t.notOk(same(y, x))
   t.end()
 })
