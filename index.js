@@ -55,6 +55,10 @@ function shallower_ (a, b, ca, cb) {
     return true
   } else if (a === null || b === null) {
     return a == b
+  } else if (a instanceof RegExp && typeof b === 'string') {
+    return a.test(b)
+  } else if (typeof a === 'string' && b instanceof RegExp) {
+    return b.test(a)
   } else if (typeof a !== 'object' || typeof b !== 'object') {
     return false
   } else if (Buffer.isBuffer(a) && Buffer.isBuffer(b)) {
