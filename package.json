@@ -6,6 +6,9 @@
   "scripts": {
     "test": "standard && tap test/*.js --coverage"
   },
+  "browser": {
+    "buffertools": false
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/othiym23/only-shallow.git"
